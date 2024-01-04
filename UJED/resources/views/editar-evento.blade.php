@@ -25,7 +25,7 @@
                 </div>
                 <div class="input-group mt-3">
                     <label for="imagen" class="input-group-text">Imagen</label>
-                    <input class="form-control" id="imagen" type="file" name="imagen" value="">
+                    <input class="form-control" id="imagen" type="file" name="imagen" value="" accept="image/*">
                 </div>
                 <div class="input-group mt-3">
                     <label for="precio" class="input-group-text">Precio $</label>

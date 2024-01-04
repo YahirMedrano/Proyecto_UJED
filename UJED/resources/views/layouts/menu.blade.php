@@ -9,6 +9,9 @@
                    <li class="nav-item">
                <a class="nav-link active" aria-current="page" href="/">Inicio</a>
                </li>
+            @if (auth()->user() === null)
+                
+            @else
             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Perfil
             </a>
@@ -17,14 +20,31 @@
                     <li><a class="dropdown-item" href="{{ url('boletos-proximos') }}">Mis boletos</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+                </ul>
             </li>
+            @endif
+
+            @if (auth()->user() === null)
             <li class="nav-item">
                 <a class="nav-link" href="{{url('login')}}">Login</a>
             </li>
+                
+            @else
             <li class="nav-item">
-                <a class="nav-link" href="{{url('admin')}}">Admin</a>
+                <a class="nav-link" href="{{url('home')}}">Logout</a>
             </li>
+                
+            @endif
+           
+            @if (auth()->user() === null)
+                
+            @else
+                @if (auth()->user()->type === 'Administrador'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('admin')}}">Admin</a>
+                    </li>
+                @endif   
+            @endif
         </ul>
         <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

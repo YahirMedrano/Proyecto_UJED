@@ -29,12 +29,11 @@ use App\mail\AlertEvent;
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\EventController::class, 'inicio']);
 //rutas de login y regsitro
 Auth::routes(); 
 
 route::group(['middleware' => ['auth']], function(){
-
-    Route::get('/', [App\Http\Controllers\EventController::class, 'inicio']);
 
     Route::get('admin', [EventController::class, 'index']);
 

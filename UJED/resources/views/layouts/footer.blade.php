@@ -1,6 +1,6 @@
 <footer>
             <div class="footer">
-                <div class="bg-dark mt-4 border-top border-danger rounded-top-2">
+                <div class="bg-dark border-top border-danger rounded-top-2">
                     <div class="container text-center text-white">
                         <div class="row py-4">
                             <div class="col-lg-3 text-start mt-5">
@@ -41,10 +41,8 @@
                         <img src="{{ asset('img/logo-ujed.png') }}" width="150" height="150" alt="">  
                     </div>
                 </div>
-                <div class="" style="background-color: #961429">
-                    <div class="container pt-3" style="display: flex; justify-content:center">
-                        <p class="text-white">Constitución 404 Sur, Zona Centro. C.P. 34000, Durango, Dgo. México. Tel: (618) 827 12 00.</p>
-                    </div>
+                <div class="py-3" style="background-color: #961429">
+                    <p class="text-white text-center" style="padding-top: 1%;">Constitución 404 Sur, Zona Centro. C.P. 34000, Durango, Dgo. México. Tel: (618) 827 12 00.</p>
                 </div>
             </div>
 </footer>

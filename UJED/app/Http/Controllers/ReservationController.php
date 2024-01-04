@@ -29,6 +29,7 @@ class ReservationController extends Controller
     public function boletoproximo(){
         $idUsuarioLogueado = Auth::id();
         $reservaciones = Reservation::join('events','event_id','=','events.id')
+        ->select('reservations.*')
         ->where('user_id', $idUsuarioLogueado)
         ->where('events.expiracion','=','Proximo')
         ->get();
