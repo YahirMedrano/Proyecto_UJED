@@ -19,23 +19,16 @@
                     </div>
                 </div>
                     <div class="col-sm-6" style="text-align: -webkit-center">
-                        <form action="{{ url('reservacion/'.$events->id) }}" method="post">
-                        @csrf
                         <div class="card" style="width: 18rem; border-right-color: #dc3545; border-right-width: 4px; border-bottom-color: #dc3545; border-bottom-width: 4px;">
                             <div class="card-body">
-                              <h5 class="card-title">Precio de boletos:</h5>
+                              <h5 class="card-title">Precio del boleto:</h5>
                               <h4 class="card-text fw-bold">${{ $events->precio }}</h4>
-                              <div class="input-group my-3">
-                                <span class="input-group-text fst-italic font-monospace text-body-secondary" for="cantidad">Cantidad</span>
-                                <input id="cantidad" type="text" name="cantidad" class="form-control" value="{{ old('cantidad') }}" aria-label="cantidad" aria-describedby="cantidad" required>
-                              </div>
-                              <button type="submit" class="btn btn-outline-danger mt-3">
+                              <a href="{{ url('reservacion/'.$events->id) }}" class="btn btn-outline-danger mt-3">
                                 <i class="fas fa-solid fa-cart-shopping pe-1"></i>
-                                Comprar boleto(s)
-                                </button>                            
+                                Comprar boleto
+                              </a>                            
                             </div>
                         </div>
-                        </form>
                     </div>
             </div>
         </div>

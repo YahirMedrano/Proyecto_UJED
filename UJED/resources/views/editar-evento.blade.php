@@ -69,6 +69,12 @@
                             </select>
                         </div>  
                     </div>
+                    <div class="col">
+                        <label for="url_stripe" class="form-label mt-2">URL Stripe</label> 
+                        <div>
+                            <input id="url_stripe" type="text" class="form-control" name="url_stripe" value="{{ $events->url_stripe }}" autocomplete="url_stripe" autofocus required>
+                        </div>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary mt-3">
                     <i class="fas fa-fw fa-paper-plane"></i>

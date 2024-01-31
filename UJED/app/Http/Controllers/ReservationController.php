@@ -9,16 +9,26 @@ use App\Models\Event;
 use App\Http\Requests\ReservationRequest;
 use App\Http\Requests\ReservationUpdRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Cache;
 use Image;
 use Illuminate\Support\Facades\View;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use Illuminate\Support\Facades\Mail;
+use App\mail\TicketEmail;
+
+
 
 class ReservationController extends Controller
 {
-    public function index(ReservationRequest $request, $id1){
+    public function index($id1){
         $event = Event::find($id1);
-        $cantidad = $request->cantidad;
-        return view('reservacionviews', compact('event', 'cantidad'));
+        return view('reservacionviews', compact('event'));
+    }
+
+    public function pagar($id2){
+        cache::put('idEvent', $id2, now()->addMinutes(5));
+        $event = Event::find($id2);
+        return redirect($event->url_stripe);
     }
 
     public function exitosa($id){
@@ -45,38 +55,37 @@ class ReservationController extends Controller
         return view('boletospasadosviews', compact('reservaciones'));
     }
 
-    public function confirmar($id){
+    public function confirmar($id, $id2){
         $events = Event::find($id);
-        return view('confirmacionviews', compact('events'));
+        $reservacion = $id2;
+        return view('confirmacionviews', compact('events','reservacion'));
+    }
+
+    public function confirmacion($id){
+        $reservacion = Reservation::find($id);
+        $reservacion->asistencia = "Confirmada";
+        $reservacion->save();
+        return redirect('boletos-proximos');
     }
 
     public function generarYenviarboleto(){
         $html = view('boleto')->render();
-        $pdf = PDF::loadHTML($html);
-        $pdf->save(storage_path('app/public/mi_pdf.pdf'));
+        $pdf = PDF::loadHtml($html);
+        $pdf->save(storage_path('app/public/mypdf.pdf'));
         return view('boleto');
     }
 
-    private function crearImagenBoleto()
-    {
-        // Lógica para crear el boleto como una imagen usando Intervention Image
-        $img = Image::canvas(600, 400, '#ffffff'); // Ejemplo: una imagen en blanco de 600x400 píxeles
-        $img->text('Mi Evento', 300, 200, function ($font) {
-            $font->size(24);
-            $font->color('#000000');
-            $font->align('center');
-            $font->valign('center');
-        });
-
-        return $img;
-    }
-
-    public function save($id1,$id2,$id3){
+    public function save(){
         $reservations = new Reservation;
-        $reservations->cantidad = $id3;
-        $reservations->user_id = $id1;
-        $reservations->event_id = $id2;
+        $reservations->user_id = Auth::id();
+        $reservations->event_id = cache::get('idEvent');
         $reservations->save();
+        $reservationId = $reservations->id;
+        $reservation = Reservation::find($reservationId);
+        $pdf = PDF::loadView('boleto', ['reservation' => $reservation]);
+        $pdfData = $pdf->output();
+
+        Mail::to($reservation->user->email)->send(new TicketEmail($pdfData));
         return redirect('reservacion-exitosa/'.$reservations->id);
     }
 

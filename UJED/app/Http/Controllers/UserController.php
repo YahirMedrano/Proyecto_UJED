@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdRequest;
+use App\Http\Requests\AddAdminRequest;
 use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
@@ -15,26 +16,42 @@ class UserController extends Controller
         $user = User::find($id);
         return view('perfilviews', compact('user'));
     }
+
+    public function indexAll(){
+        $users = User::all();
+        return view('usersviews', compact('users'));
+    }
     
-    public function save(UserRequest $request){
-        $users = new User;
-        $users->name = $request->name;
-        $users->apellido_paterno = $request->apellido_paterno;
-        $users->apellido_materno = $request->apellido_materno;
-        $users->email = $request->email;
-        $users->phone = $request->phone;
-        $users->password = Crypt::encryptString($request->password);
-        $users->type = $request->type;
-        $users->save();
+    public function saveAdmin(AddAdminRequest $request){
+        $user = User::find($request->id);
+        $user->type = "Administrador";
+        $user->save();
         return redirect('usuarios');
     }
 
     public function edit($id){
         $user = User::find($id);
+        return view('editar-usuario', compact('user'));
+    }
+
+    public function editP($id){
+        $user = User::find($id);
         return view('editar-perfil', compact('user'));
     }
 
     public function update(UserUpdRequest $request, $id){
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->apellido_paterno = $request->apellido_paterno;
+        $user->apellido_materno = $request->apellido_materno;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->type = $request->type;
+        $user->save();
+        return redirect('usuarios');
+    }
+
+    public function updateP(UserUpdRequest $request, $id){
         $user = User::find($id);
         $user->name = $request->name;
         $user->apellido_paterno = $request->apellido_paterno;

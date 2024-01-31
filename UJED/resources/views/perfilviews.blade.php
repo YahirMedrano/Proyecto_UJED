@@ -23,7 +23,7 @@
                 <input type="text" class="form-control" value="{{ $user->apellido_materno }}" aria-label="apellido_m" aria-describedby="apellido_m" disabled>
             </div>
         </div>
-        <div class="row img-fluid mt-3" style="justify-content: center">
+        <div class="row img-fluid mt-3 mb-5" style="justify-content: center">
             <div class="input-group mb-3 col-sm-6" style="inline-size: fit-content;">
                 <span class="input-group-text" id="email">Correo electronico</span>
                 <input type="text" class="form-control" value="{{ $user->email }}" aria-label="email" aria-describedby="email" disabled>

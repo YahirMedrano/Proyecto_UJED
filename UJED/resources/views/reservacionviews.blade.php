@@ -60,14 +60,14 @@
                 <div class="row">
                     <p class="pt-3" style="border-top:dashed; border-top-color:#f8d7da;">Resumen de la reservacion</p>
                     <p>Tipo de boleto: General</p>
-                    <p class="pt-3" style="border-top: dashed; border-top-color:#f8d7da;">Cantidad: {{ $cantidad }}</p>
-                    <p>Precio: {{ $cantidad }} * ${{ $event->precio }}MXN</p>
-                    <p class="pt-3" style="border-top:dashed; border-top-color:#f8d7da;">Total: ${{ $cantidad * $event->precio }}MXN</p>
+                    <p>Precio: 1 * ${{ $event->precio }}MXN</p>
+                    <p class="pt-3" style="border-top:dashed; border-top-color:#f8d7da;">Total: ${{ $event->precio }}MXN</p>
                 </div>
             </div>
         </div>
         <div class="text-center my-4">
-            <a class="btn btn-outline-primary btn-sm" href="{{url('crear-reservacion/'.Auth::user()->id.'/'.$event->id.'/'.$cantidad) }}">Confirmar</a>
+           <!-- <a class="btn btn-outline-primary btn-sm" href="url('crear-reservacion/'.Auth::user()->id.'/'.$event->id)">Confirmar</a> -->
+           <a class="btn btn-outline-primary" href="{{url('pago/'.$event->id)}}">Pagar</a>
         </div>
     </section>
 @endsection

@@ -19,9 +19,11 @@
                             <th>Imagen</th>
                             <th>Precio</th>
                             <th>Fechas</th>
+                            <th>Hora</th>
                             <th>Duración</th>
                             <th>Expiración</th>
                             <th>QR</th>
+                            <th>URL Stripe</th>
                             <th>Inmueble</th>
                             <th>Acciones</th>
                         </tr>
@@ -35,11 +37,13 @@
                             <td>
                                 <img style="width: 80px;" src="{{ asset('storage/' .$event->imagen) }}" alt="">
                             </td>
-                            <td>{{ $event->precio }}</td>
-                            <td>{{ $event->fecha_inicio }}</td>
+                            <td>${{ $event->precio }}</td>
+                            <td>{{ $event->fecha_inicio }} / {{$event->fecha_fin}}</td>
+                            <td>{{ $event->hora }}</td>
                             <td>{{ $event->duracion }}</td> 
                             <td>{{ $event->expiracion }}</td>
-                            <td>{{ $event->qr_code }}</td>
+                            <td style="max-width: 80px;">{{ $event->qr_code }}</td>
+                            <td style="max-width: 80px;">{{ $event->url_stripe }}</td>
                             <td>{{ $event->estate->nombre }}</td>
                             <td>
                                 <a class="btn btn-info btn-sm" href="{{ url('editar-evento/'.$event->id) }}">

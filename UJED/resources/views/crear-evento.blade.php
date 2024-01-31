@@ -42,6 +42,12 @@
                                     <input id="fecha_fin" type="date" class="form-control" name="fecha_fin" value="{{ old('fecha_fin') }}" autocomplete="fecha_fin" autofocus required>
                                 </div>
                             </div>
+                            <div class="col">
+                                <label for="hora" class="form-label mt-2">Hora</label>
+                                <div>
+                                    <input id="hora" type="time" class="form-control" name="hora" value="{{ old('hora') }}" autocomplete="hora" autofocus required>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -65,6 +71,12 @@
                                             <option value="{{$estate->id}}">{{ $estate->nombre }}</option>
                                         @endforeach
                                     </select>
+                                </div>  
+                            </div>
+                            <div class="col">
+                                <label for="url_stripe" class="form-label mt-2">URL Stripe</label> 
+                                <div>
+                                    <input id="url_stripe" type="text" class="form-control" name="url_stripe" value="{{ old('url_stripe') }}" autocomplete="url_stripe" autofocus required>
                                 </div>  
                             </div>
                         </div>

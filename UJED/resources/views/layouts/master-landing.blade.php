@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>UJED</title>
-        <link rel="icon" href="img/logo.svg" type="image/x-icon">
+        <title>Universidad Juárez del Estado de Durango (UJED)</title>
+        <link rel="icon" href="/img/logo.svg" type="image/x-icon">
         <!-- Styles -->
         <link href="{{ asset('css/fonts.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">

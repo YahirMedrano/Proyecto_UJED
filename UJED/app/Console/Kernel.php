@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Models\Event;
 
 class Kernel extends ConsoleKernel
 {
@@ -14,9 +15,17 @@ class Kernel extends ConsoleKernel
      * @return void
      */
     protected function schedule(Schedule $schedule)
-    {
-        // $schedule->command('inspire')->hourly();
-    }
+        {
+            $schedule->call(function () {
+                // Obtener eventos cuya fecha haya pasado
+                $eventosPasados = Event::where('fecha_fin', '<', now())->get();
+
+                // Actualizar el estado de los eventos a "Pasado"
+                foreach ($eventosPasados as $evento) {
+                    $evento->update(['expiracion' => 'Pasado']);
+                }
+            })->daily();
+        }
 
     /**
      * Register the commands for the application.

@@ -15,9 +15,8 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->integer('cantidad');
+            $table->enum('asistencia',['No confirmada','Confirmada'])->default('No confirmada');
             $table->timestamps();
-
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('event_id')->constrained('events');
         });

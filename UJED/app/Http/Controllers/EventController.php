@@ -14,7 +14,7 @@ class EventController extends Controller
 {
     public function inicio()
     {
-        $events = Event::orderBy('id', 'ASC')->get()->take(4);
+        $events = Event::where('expiracion', 'Proximo')->orderBy('id', 'ASC')->get()->take(4);
         return view('index', compact('events'));
     }
 
@@ -40,8 +40,10 @@ class EventController extends Controller
         $events->precio = $request->precio;
         $events->fecha_inicio = $request->fecha_inicio;
         $events->fecha_fin = $request->fecha_fin;
+        $events->hora = $request->hora;
         $events->duracion = $request->duracion;
         $events->expiracion = "Proximo";
+        $events->url_stripe = $request->url_stripe;
         $events->estate_id = $request->estate_id;
         $events->save();
         // Generar y guardar el código QR
@@ -75,6 +77,7 @@ class EventController extends Controller
         $events->fecha_inicio = $request->fecha_inicio;
         $events->fecha_fin = $request->fecha_fin;
         $events->duracion = $request->duracion;
+        $events->url_stripe = $request->url_stripe;
         $events->save();
         return redirect('eventos');
     }

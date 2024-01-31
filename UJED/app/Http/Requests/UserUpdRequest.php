@@ -28,6 +28,8 @@ class UserUpdRequest extends FormRequest
             'apellido_paterno' => 'required|max:255|string',
             'apellido_materno' => 'sometimes|max:255|string',
             'email' => 'required|max:255|string',
-            'phone' => 'sometimes|max:10|string'        ];
+            'phone' => 'sometimes|max:10|string',
+            'type' => 'required|in:Usuario,Administrador'    
+        ];
     }
 }

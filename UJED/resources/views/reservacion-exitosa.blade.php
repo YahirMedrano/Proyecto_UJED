@@ -10,14 +10,9 @@
             </div>
             <img src="{{ asset('img/Completado2.png') }}" class="img-fluid" alt="">
             <p>Los boletos se han enviado a:</p>
-            <p>{{ $reservation->user->email }}</p>
-
-            <p>¿Algun problema recibiendo los boletos?</p>
-            <div class="text-center mb-4">
-                <a class="btn btn-outline-danger btn-sm" href="{{--url('crear-reservacion/'.Auth::user()->id.'/'.$event->id.'/'.$cantidad) --}}">Enviar de nuevo</a>
-            </div>
+            <p class="fw-bold">{{ $reservation->user->email }}</p>
             <p>¿Necesitas ayuda? Contactanos</p>
-            <p>618-827-12-00 ujed@ujed.mx</p>
+            <p class="fw-bold">618-827-12-00 ujed@ujed.mx</p>
         </div>
     </section>
 @endsection

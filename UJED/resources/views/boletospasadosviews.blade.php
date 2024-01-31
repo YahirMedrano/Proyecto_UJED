@@ -18,7 +18,7 @@
                 </div>
                 @foreach($reservaciones as $reservacion)
                 <div style="text-align: -webkit-center;">
-                    <div class="card border-danger m-5 img-fluid text-center" style="background-color: cornsilk; inline-size: fit-content;">
+                    <div class="card border-danger m-5 img-fluid text-center" style="background-color: cornsilk; inline-size: fit-content; width:60%;">
                         <div class="row g-0">
                           <div class="col-md-6 text-center align-self-center">
                             <img class="rounded" style="width: 50%;" src="{{ asset('storage/'.$reservacion->event->imagen) }}" alt="">

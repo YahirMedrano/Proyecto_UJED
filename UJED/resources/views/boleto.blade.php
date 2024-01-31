@@ -7,79 +7,79 @@
     <title>Boleto</title>
     <link rel="icon" href="img/logo.svg" type="image/x-icon">
     <!-- Styles -->
-    <link href="{{ asset('css/fonts.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
-<body>
-    <div class="img-fluid text-center">
-        <p>Universidad Juarez del Estado de Durango</p>
-        <p>Direccion de Difusión Cultural</p>
+<body style="width: 100%; height:100%; margin: 0 auto; font-family:cursive;">
+    <div class="img-fluid text-center" style="text-align: center;">
+        <p style="font-weight:bold;">Universidad Juárez del Estado de Durango</p>
+        <p style="font-weight:bold;">Direccion de Difusión Cultural</p>
+        <p style="font-weight:bold;">Presentan</p>
         <div class="row img-fluid">
-            <p>Evento</p>
-            <p>Nombre</p>
+            <p style="background-color: #b11830;color: white; font-weight:bold;">EVENTO</p>
+            <p style="text-transform: uppercase;">{{$reservation->event->nombre}}</p>
+        </div>
+        <table style="width:100%; text-align:center;">
+            <tr>
+                <td style="width:50%;">
+                    <p style="background-color: #b11830;color: white; margin-right:2%; font-weight:bold;">FECHA</p>
+                    <p style="margin-right:2%;text-transform: uppercase;">{{$reservation->event->fecha_inicio}}</p>
+                </td>
+                <td style="width:50%;">
+                    <p style="background-color: #b11830;color: white; margin-left:2%; font-weight:bold;">HORA</p>
+                    <p style="margin-left:2%;text-transform: uppercase;">{{$reservation->event->hora}}</p>
+                </td>
+            </tr>
+        </table>
+        <div class="row img-fluid">
+            <p style="background-color: #b11830;color: white; margin-right:5%; margin-left:5%; font-weight:bold;">LUGAR</p>
+            <p style="text-transform: uppercase;">{{$reservation->event->estate->nombre}}</p>
+        </div>
+        <table style="width:100%; text-align:center;">
+            <tr>
+                <td style="width:50%;">
+                    <p style="background-color: #b11830;color: white; margin-right:2%; font-weight:bold;">COOPERACIÓN</p>
+                    <p style="margin-right:2%;text-transform: uppercase;">${{$reservation->event->precio}}</p>
+                </td>
+                <td style="width:50%;">
+                    <p style="background-color: #b11830;color: white; margin-left:2%; font-weight:bold;">SECCIÓN</p>
+                    <p style="margin-left:2%;text-transform: uppercase;">General</p>
+                </td>
+            </tr>
+        </table>
+        <table style="width: 100%; text-align:center;">
+            <tr>
+                <td style="width: 50%;">
+                    <p style="font-weight:bold; padding-bottom:2%;">FOLIO: 00{{$reservation->id}}</p>
+                </td>
+            </tr>
+        </table>
+        <div class="row img-fluid" style="border-bottom-style: dashed; padding-bottom:5%; border-bottom-width:0.17rem;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Logo_de_la_Universidad_Ju%C3%A1rez_del_Estado_de_Durango.svg" alt="" width="10%">
         </div>
         <div class="row img-fluid">
-            <div class="col">
-                <p>Fecha</p>
-                <p>26</p>
-            </div>
-            <div class="col">
-                <p>Hora</p>
-                <p>5:00</p>
-            </div>
+            <p style="background-color: #b11830;color: white; font-weight:bold; margin-top:5%;">EVENTO</p>
+            <p style="text-transform: uppercase;">{{$reservation->event->nombre}}</p>
         </div>
+        <table style="width:100%; text-align:center;">
+            <tr>
+                <td style="width:50%;">
+                    <p style="background-color: #b11830;color: white; margin-right:2%; font-weight:bold;">FECHA</p>
+                    <p style="margin-right:2%;text-transform: uppercase;">{{$reservation->event->fecha_inicio}}</p>
+                </td>
+                <td style="width:50%;">
+                    <p style="background-color: #b11830;color: white; margin-left:2%; font-weight:bold;">HORA</p>
+                    <p style="margin-left:2%;text-transform: uppercase;">{{$reservation->event->hora}}</p>
+                </td>
+            </tr>
+        </table>
+        <table style="width:100%; text-align:center;">
+            <tr>
+                <td style="width:50%;">
+                    <p style="font-weight:bold; padding-bottom: 2%;">FOLIO: 00{{$reservation->id}}</p>
+                </td>
+            </tr>
+        </table>
         <div class="row img-fluid">
-            <p>Lugar</p>
-            <p>Direccion</p>
-        </div>
-        <div class="row img-fluid">
-            <div class="col">
-                <p>Cooperacion</p>
-                <p>$</p>
-            </div>
-            <div class="col">
-                <p>Seccion</p>
-                <p>General</p>
-            </div>
-        </div>
-        <div class="row img-fluid">
-            <div class="col">
-                <p>Folio</p>
-            </div>
-            <div class="col">
-                <p>Cantidad</p>
-                <p>2</p>
-            </div>
-        </div>
-        <div class="row img-fluid">
-            <p>Logo Ujed</p>
-        </div>
-        <div class="row img-fluid">
-            <p>Evento</p>
-            <p>Nombre</p>
-        </div>
-        <div class="row img-fluid">
-            <div class="col">
-                <p>Fecha</p>
-                <p>26</p>
-            </div>
-            <div class="col">
-                <p>Hora</p>
-                <p>5:00</p>
-            </div>
-        </div>
-        <div class="row img-fluid">
-            <div class="col">
-                <p>Folio</p>
-            </div>
-            <div class="col">
-                <p>Cantidad</p>
-                <p>2</p>
-            </div>
-        </div>
-        <div class="row img-fluid">
-            <p>Logo Ujed</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Logo_de_la_Universidad_Ju%C3%A1rez_del_Estado_de_Durango.svg" alt="" width="10%" style="margin-bottom: 1%;">
         </div>
     </div>
 </body>

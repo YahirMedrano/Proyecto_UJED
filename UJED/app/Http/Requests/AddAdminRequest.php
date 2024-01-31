@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SectionUpdRequest extends FormRequest
+class AddAdminRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class SectionUpdRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|in:General,Preferencial,Administrativos',
-            'disponibilidad' => 'required|int',
-            'estate_id' => 'required|int'
+            'id' =>'required|max:20|int'
         ];
     }
 }

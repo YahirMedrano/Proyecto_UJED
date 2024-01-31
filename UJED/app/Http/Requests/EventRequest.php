@@ -30,7 +30,9 @@ class EventRequest extends FormRequest
             'precio' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'fecha_inicio' => 'required|date',
             'fecha_fin' => 'required|date',
-            'duracion' => 'required|in:Menos de 1 hora,1 a 2 horas,2 a 3 horas,Mas de 3 horas'
+            'hora' => 'required|date_format:H:i',
+            'duracion' => 'required|in:Menos de 1 hora,1 a 2 horas,2 a 3 horas,Mas de 3 horas',
+            'url_stripe' => 'required|max:255|string'
         ];
     }
 }
